@@ -12,14 +12,14 @@ namespace backend.Controllers
     [Route("/api/[controller]")]
     public class PurchaseController : Controller
     {
-        public readonly IPurchase _purchase;
+        public readonly IPurchaseService _purchase;
 
-        public PurchaseController(IPurchase purchase){
+        public PurchaseController(IPurchaseService purchase){
             _purchase = purchase;
         }
 
         public async Task<IEnumerable<Purchase>> GetListAll(){
-            var purchases = await _purchase.listAll();
+            var purchases = await _purchase.ListAsync();
             return purchases;
         }
 

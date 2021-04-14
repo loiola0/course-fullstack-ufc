@@ -15,14 +15,14 @@ namespace backend.Controllers
     
     public class UserController : Controller
     {
-        private readonly IUser _user;
+        private readonly IUserService _user;
 
-        public UserController(IUser user){
+        public UserController(IUserService user){
             _user = user;
         }
 
         public async Task<IEnumerable<User>> GetListAll(){
-            var users = await _user.listAsync();
+            var users = await _user.ListAsync();
             return users;
         }
 

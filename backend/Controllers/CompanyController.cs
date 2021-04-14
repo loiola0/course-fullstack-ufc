@@ -22,7 +22,7 @@ namespace backend.Controllers
 
         [HttpGet]
         public async Task<IEnumerable<Company>> GetAllAsync(){
-            var companies = await _companyService.ListAll(); 
+            var companies = await _companyService.ListAsync(); 
             return companies;
         }
         
