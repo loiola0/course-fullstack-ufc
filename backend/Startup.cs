@@ -11,6 +11,13 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
+using Microsoft.EntityFrameworkCore;
+using AutoMapper;
+using backend.Persistence.Contexts;
+using backend.Persistence.Repositories;
+using backend.Domains.Repositories;
+using backend.Domains.Services;
+using backend.Services;
 
 namespace backend
 {
@@ -27,11 +34,29 @@ namespace backend
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddDbContext<AppDbContext>(p=>p.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+            
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "backend", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Project-Course.API", Version = "v1" });
             });
+
+
+            services.AddScoped<ICompanyRepository,CompanyRepository>();
+            services.AddScoped<ICompanyService,CompanyService>();
+             
+            services.AddScoped<IProductRepository,ProductRepository>();
+            services.AddScoped<IProductService,ProductService>();
+
+            services.AddScoped<IUserRepository,UserRepository>();
+            services.AddScoped<IUserService,UserService>();
+             
+            services.AddScoped<IPurchaseRepository,PurchaseRepository>();
+            services.AddScoped<IPurchaseService,PurchaseService>();
+             
+             
+            services.AddAutoMapper(typeof(Startup));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -40,19 +65,21 @@ namespace backend
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                app.UseSwagger();
-                app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "backend v1"));
+            }
+            else
+            {
+                app.UseExceptionHandler("/Error");
+                app.UseHsts();
             }
 
             app.UseHttpsRedirection();
-
+            app.UseStaticFiles();
             app.UseRouting();
-
-            app.UseAuthorization();
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapControllers();
+                endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
             });
         }
     }

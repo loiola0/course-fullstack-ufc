@@ -9,6 +9,6 @@ namespace backend.Domains.Repositories
 {
     public interface IUserRepository
     {
-         Task<IEnumerable<Product>> ListAsync();
+         Task<IEnumerable<User>> ListAsync();
     }
 }

@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "hVQr1I8l2ZWP+MZjbcRiDALeTcakYP+S4LA1loVnmXHABcPXR2rF6NQCz2aUi+b48xLdZkyEpbuk3kJJC/oWKQ==",
+  "dgSpecHash": "Ex2dyqXvEP63dwrgs5AZ32Ki3h4S5xFViFQzW69wvZRZ3BphfHEFugTY0PAail1/TpqjTcNrNUkVZ7HEYyvpTw==",
   "success": true,
   "projectFilePath": "/home/victor-gabriel/Documentos/projeto-open-banking/curso-fullstack/course-fullstack-ufc/backend/backend.csproj",
   "expectedPackageFiles": [
+    "/home/victor-gabriel/.nuget/packages/automapper/10.1.1/automapper.10.1.1.nupkg.sha512",
+    "/home/victor-gabriel/.nuget/packages/automapper.extensions.microsoft.dependencyinjection/8.1.1/automapper.extensions.microsoft.dependencyinjection.8.1.1.nupkg.sha512",
     "/home/victor-gabriel/.nuget/packages/humanizer.core/2.8.26/humanizer.core.2.8.26.nupkg.sha512",
     "/home/victor-gabriel/.nuget/packages/microsoft.csharp/4.7.0/microsoft.csharp.4.7.0.nupkg.sha512",
     "/home/victor-gabriel/.nuget/packages/microsoft.entityframeworkcore/5.0.3/microsoft.entityframeworkcore.5.0.3.nupkg.sha512",
@@ -22,13 +24,17 @@
     "/home/victor-gabriel/.nuget/packages/microsoft.extensions.options/5.0.0/microsoft.extensions.options.5.0.0.nupkg.sha512",
     "/home/victor-gabriel/.nuget/packages/microsoft.extensions.primitives/5.0.0/microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "/home/victor-gabriel/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/home/victor-gabriel/.nuget/packages/npgsql/5.0.3/npgsql.5.0.3.nupkg.sha512",
+    "/home/victor-gabriel/.nuget/packages/npgsql.entityframeworkcore.postgresql/5.0.2/npgsql.entityframeworkcore.postgresql.5.0.2.nupkg.sha512",
     "/home/victor-gabriel/.nuget/packages/swashbuckle.aspnetcore/5.6.3/swashbuckle.aspnetcore.5.6.3.nupkg.sha512",
     "/home/victor-gabriel/.nuget/packages/swashbuckle.aspnetcore.swagger/5.6.3/swashbuckle.aspnetcore.swagger.5.6.3.nupkg.sha512",
     "/home/victor-gabriel/.nuget/packages/swashbuckle.aspnetcore.swaggergen/5.6.3/swashbuckle.aspnetcore.swaggergen.5.6.3.nupkg.sha512",
     "/home/victor-gabriel/.nuget/packages/swashbuckle.aspnetcore.swaggerui/5.6.3/swashbuckle.aspnetcore.swaggerui.5.6.3.nupkg.sha512",
     "/home/victor-gabriel/.nuget/packages/system.collections.immutable/5.0.0/system.collections.immutable.5.0.0.nupkg.sha512",
     "/home/victor-gabriel/.nuget/packages/system.componentmodel.annotations/5.0.0/system.componentmodel.annotations.5.0.0.nupkg.sha512",
-    "/home/victor-gabriel/.nuget/packages/system.diagnostics.diagnosticsource/5.0.1/system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512"
+    "/home/victor-gabriel/.nuget/packages/system.diagnostics.diagnosticsource/5.0.1/system.diagnostics.diagnosticsource.5.0.1.nupkg.sha512",
+    "/home/victor-gabriel/.nuget/packages/system.reflection.emit/4.7.0/system.reflection.emit.4.7.0.nupkg.sha512",
+    "/home/victor-gabriel/.nuget/packages/system.runtime.compilerservices.unsafe/4.6.0/system.runtime.compilerservices.unsafe.4.6.0.nupkg.sha512"
   ],
   "logs": []
 }
