@@ -37,10 +37,10 @@ namespace backend
             services.AddDbContext<AppDbContext>(p=>p.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             
             services.AddControllers();
-            services.AddSwaggerGen(c =>
-            {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "Project-Course.API", Version = "v1" });
-            });
+            // services.AddSwaggerGen(c =>
+            // {
+            //     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Project-Course.API", Version = "v1" });
+            // });
 
 
             services.AddScoped<ICompanyRepository,CompanyRepository>();
