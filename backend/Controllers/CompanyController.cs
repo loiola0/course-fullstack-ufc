@@ -6,7 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using backend.Domains.Services;
 using backend.Domains.Models;
-
+using backend.Resources;
+using AutoMapper;
 
 namespace backend.Controllers
 {   
@@ -15,15 +16,18 @@ namespace backend.Controllers
     {
 
         private readonly ICompanyService _companyService;
+        private readonly IMapper _mapper;
 
-        public CompanyController(ICompanyService companyService){
+        public CompanyController(ICompanyService companyService,IMapper mapper){
             _companyService = companyService;
+            _mapper = mapper;
         }
 
         [HttpGet]
-        public async Task<IEnumerable<Company>> GetAllAsync(){
-            var companies = await _companyService.ListAsync(); 
-            return companies;
+        public async Task<IEnumerable<CompanyResource>> GetAllAsync(){
+            var companies = await _companyService.ListAsync();
+            var resources = _mapper.Map<IEnumerable<Company>,IEnumerable<CompanyResource>>(companies);
+            return resources;
         }
         
     }

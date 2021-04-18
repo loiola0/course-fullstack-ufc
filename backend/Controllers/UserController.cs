@@ -6,7 +6,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using backend.Domains.Services;
 using backend.Domains.Models;
-
+using backend.Resources;
+using AutoMapper;
 
 namespace backend.Controllers
 {
@@ -15,15 +16,18 @@ namespace backend.Controllers
     
     public class UserController : Controller
     {
-        private readonly IUserService _user;
+        private readonly IUserService _userService;
+        private readonly IMapper _mapper;
 
-        public UserController(IUserService user){
-            _user = user;
+        public UserController(IUserService user,IMapper mapper){
+            _userService = user;
+            _mapper = mapper;
         }
 
-        public async Task<IEnumerable<User>> GetListAll(){
-            var users = await _user.ListAsync();
-            return users;
+        public async Task<IEnumerable<UserResource>> GetAllAsync(){
+            var companies = await _userService.ListAsync();
+            var resources = _mapper.Map<IEnumerable<User>,IEnumerable<UserResource>>(companies);
+            return resources;
         }
 
     }

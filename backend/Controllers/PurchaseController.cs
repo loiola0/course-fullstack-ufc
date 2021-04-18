@@ -6,21 +6,25 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using backend.Domains.Services;
 using backend.Domains.Models;
-
+using backend.Resources;
+using AutoMapper;
 namespace backend.Controllers
 {
     [Route("/api/[controller]")]
     public class PurchaseController : Controller
     {
-        public readonly IPurchaseService _purchase;
+        public readonly IPurchaseService _purchaseService;
+        public readonly IMapper _mapper;
 
-        public PurchaseController(IPurchaseService purchase){
-            _purchase = purchase;
+        public PurchaseController(IPurchaseService purchase,IMapper mapper){
+            _purchaseService = purchase;
+            _mapper = mapper;
         }
 
-        public async Task<IEnumerable<Purchase>> GetListAll(){
-            var purchases = await _purchase.ListAsync();
-            return purchases;
+        public async Task<IEnumerable<PurchaseResource>> GetListAll(){
+            var purchases = await _purchaseService.ListAsync();
+            var resources = _mapper.Map<IEnumerable<Purchase>,IEnumerable<PurchaseResource>>(purchases);
+            return resources;
         }
 
     }
