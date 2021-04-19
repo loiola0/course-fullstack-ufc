@@ -7,6 +7,7 @@ using Microsoft.Extensions.Logging;
 using backend.Domains.Services;
 using backend.Domains.Models;
 using backend.Resources;
+using backend.Extensions;
 using AutoMapper;
 
 namespace backend.Controllers
@@ -29,6 +30,25 @@ namespace backend.Controllers
             var resources = _mapper.Map<IEnumerable<User>,IEnumerable<UserResource>>(companies);
             return resources;
         }
+
+        
+        [HttpPost]
+        public async Task<IActionResult> PostAsync([FromBody] SaveUserResource resource){
+            if(!ModelState.IsValid)
+                return BadRequest(ModelState.GetErrorMessages());
+
+            var user = _mapper.Map<SaveUserResource,User>(resource);
+            var result = await _userService.SaveAsync(user);
+
+            if(!result.Success)
+                return BadRequest(result.Message);
+
+            var userResource = _mapper.Map<User,UserResource>(result.User);
+            
+            return Ok(userResource);
+        }
+
+        
 
     }
 }

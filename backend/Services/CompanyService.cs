@@ -17,5 +17,6 @@ namespace backend.Services
         public async Task<IEnumerable<Company>> ListAsync(){
             return await _companyService.ListAsync();
         }
+        
     }
 }
