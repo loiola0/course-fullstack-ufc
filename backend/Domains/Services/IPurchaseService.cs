@@ -8,6 +8,9 @@ namespace backend.Domains.Services
     {
          Task<IEnumerable<Purchase>> ListAsync();
 
-         Task<IEnumerable<SavePurchaseResponse>> SaveAsync(Purchase purchase);
+         Task<SavePurchaseResponse> SaveAsync(Purchase purchase);
+
+         
+
     }
 }

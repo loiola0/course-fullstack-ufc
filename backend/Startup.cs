@@ -18,7 +18,8 @@ using backend.Persistence.Repositories;
 using backend.Domains.Repositories;
 using backend.Domains.Services;
 using backend.Services;
-
+using backend.Domains.Repositories;
+using backend.Persistence.Repositories;
 namespace backend
 {
     public class Startup
@@ -54,6 +55,8 @@ namespace backend
              
             services.AddScoped<IPurchaseRepository,PurchaseRepository>();
             services.AddScoped<IPurchaseService,PurchaseService>();
+
+            services.AddScoped<IUnitOfWork,UnitOfWork>();
              
              
             services.AddAutoMapper(typeof(Startup));

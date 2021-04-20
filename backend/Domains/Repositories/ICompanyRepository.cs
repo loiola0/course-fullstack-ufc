@@ -9,5 +9,7 @@ namespace backend.Domains.Repositories
     public interface ICompanyRepository
     {
          Task<IEnumerable<Company>> ListAsync();
+
+         Task AddAsync(Company company);
     }
 }

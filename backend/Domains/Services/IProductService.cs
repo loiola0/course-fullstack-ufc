@@ -7,6 +7,8 @@ namespace backend.Domains.Services
     public interface IProductService
     {
          Task<IEnumerable<Product>> ListAsync();
-         Task<IEnumerable<SaveProductResponse>> SaveAsync(Product product);
+         Task<SaveProductResponse> SaveAsync(Product product);
+
+         
     }
 }

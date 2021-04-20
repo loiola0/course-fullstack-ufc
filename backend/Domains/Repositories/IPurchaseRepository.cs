@@ -9,5 +9,8 @@ namespace backend.Domains.Repositories
     public interface IPurchaseRepository
     {
          Task<IEnumerable<Purchase>> ListAsync();
+
+         Task AddAsync(Purchase purchase);
+
     }
 }

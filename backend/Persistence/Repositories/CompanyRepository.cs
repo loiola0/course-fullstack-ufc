@@ -18,5 +18,9 @@ namespace backend.Persistence.Repositories
             return await _context.Companys.ToListAsync();
         }
 
+        public async Task AddAsync(Company company){
+            await _context.Companys.AddAsync(company);
+        }
+
     }
 }

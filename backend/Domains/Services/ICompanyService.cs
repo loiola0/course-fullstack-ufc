@@ -10,7 +10,7 @@ namespace backend.Domains.Services
     {
         Task<IEnumerable<Company>> ListAsync();
 
-        Task<IEnumerable<SaveCompanyResponse>> SaveAsync(Company company);
+        Task<SaveCompanyResponse> SaveAsync(Company company);
         
     }
 }
