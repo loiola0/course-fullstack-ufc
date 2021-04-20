@@ -11,6 +11,8 @@ namespace backend.Domains.Services
         Task<IEnumerable<Company>> ListAsync();
 
         Task<SaveCompanyResponse> SaveAsync(Company company);
+
+        Task<SaveCompanyResponse> UpdateAsync(int id,Company company);
         
     }
 }

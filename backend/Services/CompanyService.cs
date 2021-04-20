@@ -37,6 +37,32 @@ namespace backend.Services
             }
 
         }
+
+        public async Task<SaveCompanyResponse> UpdateAsync(int id,Company company){
+            var existingCompany = await _companyRepository.FindByIdAsync(id);
+            
+            if(existingCompany == null){
+                return new SaveCompanyResponse(existingCompany);
+            }
+
+            existingCompany.CompanyName = company.CompanyName;
+            existingCompany.FantasyName = company.FantasyName;
+            existingCompany.Cnpj = company.Cnpj;
+            existingCompany.Products = company.Products;
+            
+            try{
+                
+                _companyRepository.Update(existingCompany);
+                await _unitOfWork.CompleteAsync();
+
+                return new SaveCompanyResponse(existingCompany);
+
+
+            }catch(Exception ex){
+                return new SaveCompanyResponse($"An error occurred when updating the company: ${ex.Message}");
+            }
+
+        }
         
     }
 }

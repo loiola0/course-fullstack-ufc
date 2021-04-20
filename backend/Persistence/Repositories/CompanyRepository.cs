@@ -22,5 +22,13 @@ namespace backend.Persistence.Repositories
             await _context.Companys.AddAsync(company);
         }
 
+        public async Task<Company> FindByIdAsync(int id){
+            return await _context.Companys.FindAsync(id);
+        }
+
+        public void Update(Company company){
+            _context.Companys.Update(company);
+        }
+
     }
 }

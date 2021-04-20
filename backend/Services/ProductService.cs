@@ -38,5 +38,32 @@ namespace backend.Services
 
         }
 
+        public async Task<SaveProductResponse> UpdateAsync(int id,Product product){
+            var existingProduct = await _productRepository.FindByIdAsync(id);
+            
+            if(existingProduct == null){
+                return new SaveProductResponse(existingProduct);
+            }
+
+            existingProduct.Name = product.Name;
+            existingProduct.Value = product.Value;
+            existingProduct.Note = product.Note;
+            existingProduct.Description = product.Description;
+           
+            
+            try{
+                
+                _productRepository.Update(existingProduct);
+                await _unitOfWork.CompleteAsync();
+
+                return new SaveProductResponse(existingProduct);
+
+
+            }catch(Exception ex){
+                return new SaveProductResponse($"An error occurred when updating the company: ${ex.Message}");
+            }
+
+        }
+
     }
 }

@@ -9,6 +9,8 @@ namespace backend.Domains.Services
          Task<IEnumerable<Product>> ListAsync();
          Task<SaveProductResponse> SaveAsync(Product product);
 
+         Task<SaveProductResponse> UpdateAsync(int id,Product product);
+
          
     }
 }

@@ -37,5 +37,37 @@ namespace backend.Services
 
         }
 
+        public async Task<SavePurchaseResponse> UpdateAsync(int id,Purchase purchase){
+            var existingPurchase = await _purchaseRepository.FindByIdAsync(id);
+            
+            if(existingPurchase == null){
+                return new SavePurchaseResponse(existingPurchase);
+            }
+
+            existingPurchase.Note = purchase.Note;
+            existingPurchase.Value = purchase.Value;
+            existingPurchase.PaymentFormat = purchase.PaymentFormat;
+            existingPurchase.Status = purchase.Status;
+            existingPurchase.Cep = purchase.Cep;
+            existingPurchase.Address = purchase.Address;
+            existingPurchase.Date = purchase.Date;
+            
+            
+
+            
+            try{
+                
+                _purchaseRepository.Update(existingPurchase);
+                await _unitOfWork.CompleteAsync();
+
+                return new SavePurchaseResponse(existingPurchase);
+
+
+            }catch(Exception ex){
+                return new SavePurchaseResponse($"An error occurred when updating the company: ${ex.Message}");
+            }
+
+        }
+
     }
 }

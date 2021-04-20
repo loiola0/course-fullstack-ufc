@@ -10,6 +10,8 @@ namespace backend.Domains.Services
         Task<IEnumerable<User>> ListAsync();
 
         Task<SaveUserResponse> SaveAsync(User user);
+
+        Task<SaveUserResponse> UpdateAsync(int id,User user);
         
 
     }

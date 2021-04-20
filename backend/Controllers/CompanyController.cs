@@ -57,7 +57,7 @@ namespace backend.Controllers
             var company = _mapper.Map<SaveCompanyResource,Company>(resource);
             var result = await _companyService.UpdateAsync(id,company);
 
-            if(!result.Sucess){
+            if(!result.Success){
                 return BadRequest(result.Message);
             }
 

@@ -55,7 +55,7 @@ namespace backend.Controllers
             var purchase = _mapper.Map<SavePurchaseResource,Purchase>(resource);
             var result = await _purchaseService.UpdateAsync(id,purchase);
 
-            if(!result.Sucess){
+            if(!result.Success){
                 return BadRequest(result.Message);
             }
 

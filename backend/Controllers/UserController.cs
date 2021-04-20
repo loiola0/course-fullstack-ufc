@@ -58,7 +58,7 @@ namespace backend.Controllers
             var user = _mapper.Map<SaveUserResource,User>(resource);
             var result = await _userService.UpdateAsync(id,user);
 
-            if(!result.Sucess){
+            if(!result.Success){
                 return BadRequest(result.Message);
             }
 

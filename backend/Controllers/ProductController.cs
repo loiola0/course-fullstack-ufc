@@ -58,7 +58,7 @@ namespace backend.Controllers
             var product = _mapper.Map<SaveProductResource,Product>(resource);
             var result = await _productService.UpdateAsync(id,product);
 
-            if(!result.Sucess){
+            if(!result.Success){
                 return BadRequest(result.Message);
             }
 

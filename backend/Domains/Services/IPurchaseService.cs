@@ -10,6 +10,8 @@ namespace backend.Domains.Services
 
          Task<SavePurchaseResponse> SaveAsync(Purchase purchase);
 
+         Task<SavePurchaseResponse> UpdateAsync(int id,Purchase purchase);
+
          
 
     }
