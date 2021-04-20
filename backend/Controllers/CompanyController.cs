@@ -47,6 +47,24 @@ namespace backend.Controllers
             
             return Ok(companyResource);
         }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutAsync(int id,[FromBody] SaveCompanyResource resource){
+            if(!ModelState.IsValid){
+                return BadRequest(ModelState.GetErrorMessages());
+            }
+
+            var company = _mapper.Map<SaveCompanyResource,Company>(resource);
+            var result = await _companyService.UpdateAsync(id,company);
+
+            if(!result.Sucess){
+                return BadRequest(result.Message);
+            }
+
+            var companyResource = _mapper.Map<Company,CompanyResource>(result.Company);
+
+            return Ok(companyResource);
+        }
         
     }
 }

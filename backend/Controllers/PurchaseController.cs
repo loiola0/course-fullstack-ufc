@@ -22,12 +22,15 @@ namespace backend.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
         public async Task<IEnumerable<PurchaseResource>> GetListAll(){
             var purchases = await _purchaseService.ListAsync();
             var resources = _mapper.Map<IEnumerable<Purchase>,IEnumerable<PurchaseResource>>(purchases);
             return resources;
         }
 
+        
+        [HttpPost]
         public async Task<IActionResult> PostAsync([FromBody] SavePurchaseResource resource){
             if(!ModelState.IsValid)
                 return BadRequest(ModelState.GetErrorMessages());
@@ -40,6 +43,24 @@ namespace backend.Controllers
 
             var purchaseResource = _mapper.Map<Purchase,PurchaseResource>(result.Purchase);
             
+            return Ok(purchaseResource);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutAsync(int id,[FromBody] SavePurchaseResource resource){
+            if(!ModelState.IsValid){
+                return BadRequest(ModelState.GetErrorMessages());
+            }
+
+            var purchase = _mapper.Map<SavePurchaseResource,Purchase>(resource);
+            var result = await _purchaseService.UpdateAsync(id,purchase);
+
+            if(!result.Sucess){
+                return BadRequest(result.Message);
+            }
+
+            var purchaseResource = _mapper.Map<Purchase,PurchaseResource>(result.Purchase);
+
             return Ok(purchaseResource);
         }
 

@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace backend.Domains.Models
 {
     public class User
@@ -7,6 +9,8 @@ namespace backend.Domains.Models
         public string Email {get;set;}
         public string Password {get;set;}
         public string Cpf {get;set;}
+
+        public IList<Purchase> Purchases { get; set; }
         
 
     }

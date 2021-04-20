@@ -25,6 +25,7 @@ namespace backend.Controllers
             _mapper = mapper;
         }
 
+        [HttpGet]
         public async Task<IEnumerable<UserResource>> GetAllAsync(){
             var companies = await _userService.ListAsync();
             var resources = _mapper.Map<IEnumerable<User>,IEnumerable<UserResource>>(companies);
@@ -45,6 +46,24 @@ namespace backend.Controllers
 
             var userResource = _mapper.Map<User,UserResource>(result.User);
             
+            return Ok(userResource);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutAsync(int id,[FromBody] SaveUserResource resource){
+            if(!ModelState.IsValid){
+                return BadRequest(ModelState.GetErrorMessages());
+            }
+
+            var user = _mapper.Map<SaveUserResource,User>(resource);
+            var result = await _userService.UpdateAsync(id,user);
+
+            if(!result.Sucess){
+                return BadRequest(result.Message);
+            }
+
+            var userResource = _mapper.Map<User,UserResource>(result.User);
+
             return Ok(userResource);
         }
 
