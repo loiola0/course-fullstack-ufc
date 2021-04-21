@@ -64,5 +64,18 @@ namespace backend.Controllers
             return Ok(purchaseResource);
         }
 
+        [HttpDelete("{id}")]
+         public async Task<IActionResult> DeleteAsync(int id){
+             var result = await _purchaseService.DeleteAsync(id);
+
+             if(!result.Success){
+                 return BadRequest(result.Message);
+             }
+             
+             var purchaseResource = _mapper.Map<Purchase,PurchaseResource>(result.Purchase);
+             
+             return Ok(purchaseResource);
+         }
+
     }
 }

@@ -67,6 +67,18 @@ namespace backend.Controllers
             return Ok(userResource);
         }
 
+        [HttpDelete("{id}")]
+         public async Task<IActionResult> DeleteAsync(int id){
+             var result = await _userService.DeleteAsync(id);
+
+             if(!result.Success){
+                 return BadRequest(result.Message);
+             }
+             
+             var userResource = _mapper.Map<User,UserResource>(result.User);
+             
+             return Ok(userResource);
+         }
         
 
     }

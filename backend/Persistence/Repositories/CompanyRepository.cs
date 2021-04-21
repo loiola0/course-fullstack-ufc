@@ -30,5 +30,9 @@ namespace backend.Persistence.Repositories
             _context.Companys.Update(company);
         }
 
+        public void Remove(Company company){
+            _context.Companys.Remove(company);
+        }
+
     }
 }

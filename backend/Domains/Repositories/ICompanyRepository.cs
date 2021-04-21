@@ -16,5 +16,7 @@ namespace backend.Domains.Repositories
 
          void Update(Company company);
 
+         void Remove(Company company);
+
     }
 }

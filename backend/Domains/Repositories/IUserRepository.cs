@@ -17,5 +17,7 @@ namespace backend.Domains.Repositories
 
          void Update(User user);
 
+         void Remove(User user);
+
     }
 }

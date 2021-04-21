@@ -65,6 +65,19 @@ namespace backend.Controllers
 
             return Ok(companyResource);
         }
+
+        [HttpDelete("{id}")]
+         public async Task<IActionResult> DeleteAsync(int id){
+             var result = await _companyService.DeleteAsync(id);
+
+             if(!result.Success){
+                 return BadRequest(result.Message);
+             }
+             
+             var companyResource = _mapper.Map<Company,CompanyResource>(result.Company);
+             
+             return Ok(companyResource);
+         }
         
     }
 }

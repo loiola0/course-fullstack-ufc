@@ -30,5 +30,10 @@ namespace backend.Persistence.Repositories
             _context.Purchases.Update(purchase);
         }
 
+        public void Remove(Purchase purchase){
+            _context.Purchases.Remove(purchase);
+        }
+
+        
     }
 }

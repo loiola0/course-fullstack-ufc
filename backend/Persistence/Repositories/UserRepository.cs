@@ -30,5 +30,9 @@ namespace backend.Persistence.Repositories
             _context.Users.Update(user);
         }
 
+        public void Remove(User user){
+            _context.Users.Remove(user);
+        }
+
     }
 }
