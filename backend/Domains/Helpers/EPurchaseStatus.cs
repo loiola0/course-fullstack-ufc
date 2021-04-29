@@ -1,7 +1,7 @@
 using System.ComponentModel;
 namespace backend.Domains.Helpers
 {
-    public enum EPurchaseStatus
+    public enum EPurchaseStatus : byte
     {
         [Description("PAID")]
         Paid = 1,

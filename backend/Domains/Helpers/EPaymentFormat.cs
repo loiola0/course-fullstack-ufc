@@ -1,7 +1,7 @@
 using System.ComponentModel;
 namespace backend.Domains.Helpers
 {
-    public enum EPaymentFormat
+    public enum EPaymentFormat : byte
     {
         [Description("CC")]
         CreditCard = 1,

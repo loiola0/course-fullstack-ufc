@@ -17,6 +17,7 @@ namespace backend.Mapping
             CreateMap<SaveProductResource,Product>();
             CreateMap<SaveUserResource,User>();
             CreateMap<SavePurchaseResource,Purchase>();
+            CreateMap<SaveCartResource,Cart>();
         }
 
     }

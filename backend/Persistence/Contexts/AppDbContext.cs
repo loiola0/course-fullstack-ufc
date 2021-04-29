@@ -11,6 +11,9 @@ namespace backend.Persistence.Contexts
          public DbSet<Product> Products {get;set;}
          public DbSet<Purchase> Purchases {get;set;}
          public DbSet<User> Users {get;set;}
+        public DbSet<Cart> Carts {get;set;}
+
+
          public AppDbContext(DbContextOptions<AppDbContext> options) : base(options){}
 
 
@@ -59,7 +62,12 @@ namespace backend.Persistence.Contexts
              modelBuilder.Entity<User>().Property(p => p.Email).IsRequired();
              modelBuilder.Entity<User>().Property(p => p.Password).IsRequired();
              modelBuilder.Entity<User>().Property(p => p.Cpf).IsRequired().HasMaxLength(20);
-           
+
+             //model relashionship between product and purchase
+             modelBuilder.Entity<Cart>().ToTable("Carts");
+             modelBuilder.Entity<Cart>().HasKey(p => new {p.PurchaseId, p.ProductId});
+             modelBuilder.Entity<Cart>().Property(p => p.Id).ValueGeneratedOnAdd();
+             modelBuilder.Entity<Cart>().Property(p => p.Quantity).IsRequired().HasDefaultValue(0);
 
          } 
 
