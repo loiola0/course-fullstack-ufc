@@ -14,7 +14,7 @@ namespace backend.Domains.Models
         public string Note {get;set;}
         public string Cep {get;set;}
         public string Address {get;set;}
-        public string IdUser {get;set;}
+        public string UserId {get;set;}
 
 
     }

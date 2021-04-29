@@ -9,7 +9,7 @@ namespace backend.Domains.Models
         public string CompanyName {get;set;}
         public string Cnpj {get;set;}
 
-        public IList<Product> Products {get;set;} = new List<Product>();
+        public IList<Product> Products {get;set;}
 
     }
 }
