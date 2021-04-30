@@ -56,6 +56,9 @@ namespace backend
             services.AddScoped<IPurchaseRepository,PurchaseRepository>();
             services.AddScoped<IPurchaseService,PurchaseService>();
 
+            services.AddScoped<ICartRepository,CartRepository>();
+            services.AddScoped<ICartService,CartService>();
+
             services.AddScoped<IUnitOfWork,UnitOfWork>();
              
              

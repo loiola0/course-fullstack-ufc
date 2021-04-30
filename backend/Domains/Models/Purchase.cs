@@ -1,5 +1,5 @@
 using System;
-
+using System.Collections.Generic;
 using backend.Domains.Helpers;
 
 namespace backend.Domains.Models
@@ -15,6 +15,8 @@ namespace backend.Domains.Models
         public string Cep {get;set;}
         public string Address {get;set;}
         public string UserId {get;set;}
+
+        public IList<Cart> Items { get; set; }
 
 
     }
