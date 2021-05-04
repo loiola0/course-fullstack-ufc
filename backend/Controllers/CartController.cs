@@ -5,10 +5,12 @@ using backend.Domains.Models;
 using backend.Domains.Services;
 using backend.Resources;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 namespace backend.Controllers
 {
     [Route("/api/[controller]")]
+    //[Authorize()]
     public class CartController : Controller
     {
         private readonly ICartService _cartService;

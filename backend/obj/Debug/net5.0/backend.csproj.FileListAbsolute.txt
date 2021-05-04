@@ -38,3 +38,10 @@
 /home/victor-gabriel/Documentos/projeto-open-banking/curso-fullstack/course-fullstack-ufc/backend/bin/Debug/net5.0/Npgsql.dll
 /home/victor-gabriel/Documentos/projeto-open-banking/curso-fullstack/course-fullstack-ufc/backend/bin/Debug/net5.0/Npgsql.EntityFrameworkCore.PostgreSQL.dll
 /home/victor-gabriel/Documentos/projeto-open-banking/curso-fullstack/course-fullstack-ufc/backend/bin/Debug/net5.0/System.Diagnostics.DiagnosticSource.dll
+/home/victor-gabriel/Documentos/projeto-open-banking/curso-fullstack/course-fullstack-ufc/backend/bin/Debug/net5.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll
+/home/victor-gabriel/Documentos/projeto-open-banking/curso-fullstack/course-fullstack-ufc/backend/bin/Debug/net5.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/victor-gabriel/Documentos/projeto-open-banking/curso-fullstack/course-fullstack-ufc/backend/bin/Debug/net5.0/Microsoft.IdentityModel.Logging.dll
+/home/victor-gabriel/Documentos/projeto-open-banking/curso-fullstack/course-fullstack-ufc/backend/bin/Debug/net5.0/Microsoft.IdentityModel.Protocols.dll
+/home/victor-gabriel/Documentos/projeto-open-banking/curso-fullstack/course-fullstack-ufc/backend/bin/Debug/net5.0/Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+/home/victor-gabriel/Documentos/projeto-open-banking/curso-fullstack/course-fullstack-ufc/backend/bin/Debug/net5.0/Microsoft.IdentityModel.Tokens.dll
+/home/victor-gabriel/Documentos/projeto-open-banking/curso-fullstack/course-fullstack-ufc/backend/bin/Debug/net5.0/System.IdentityModel.Tokens.Jwt.dll

@@ -10,6 +10,7 @@ namespace backend.Domains.Models
         public string Cnpj {get;set;}
 
         public IList<Product> Products {get;set;}
+        
 
     }
 }

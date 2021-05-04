@@ -9,9 +9,13 @@ using backend.Domains.Models;
 using backend.Resources;
 using backend.Extensions;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
+
+
 namespace backend.Controllers
 {
     [Route("/api/[controller]")]
+    [Authorize()]
     public class PurchaseController : Controller
     {
         public readonly IPurchaseService _purchaseService;

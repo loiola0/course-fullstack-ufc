@@ -13,13 +13,15 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Microsoft.EntityFrameworkCore;
 using AutoMapper;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
 using backend.Persistence.Contexts;
 using backend.Persistence.Repositories;
 using backend.Domains.Repositories;
 using backend.Domains.Services;
 using backend.Services;
-using backend.Domains.Repositories;
-using backend.Persistence.Repositories;
+
 namespace backend
 {
     public class Startup
@@ -35,6 +37,16 @@ namespace backend
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.AddCors(options =>{
+
+                options.AddPolicy(name: "MyPolicy",
+                    builder =>{
+                        builder.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod();
+                    }
+                );
+
+            });
+
             services.AddDbContext<AppDbContext>(p=>p.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
             
             services.AddControllers();
@@ -42,6 +54,27 @@ namespace backend
             // {
             //     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Project-Course.API", Version = "v1" });
             // });
+
+            var key = Encoding.ASCII.GetBytes(Settings.Secret);
+
+            services.AddAuthentication(x=>{
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x=>{
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true, //precisa validar a chave
+                    IssuerSigningKey = new SymmetricSecurityKey(key),//informamos que é uma chave simétrica.
+                    ValidateIssuer = false,
+                    ValidateAudience = false,
+                };
+
+            });
+
+
 
 
             services.AddScoped<ICompanyRepository,CompanyRepository>();
@@ -82,8 +115,13 @@ namespace backend
             app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseRouting();
-            app.UseCors();
+            app.UseCors(x=> x.AllowAnyHeader()
+            .AllowAnyMethod()
+            .AllowAnyOrigin());
 
+            app.UseAuthentication();
+            app.UseAuthorization();
+            
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}");
